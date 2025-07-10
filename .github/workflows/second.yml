@@ -1,0 +1,27 @@
+name: Second workflow
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  checkout:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+  process:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print identifiers
+        run: |
+          echo "WORKFLOW:    ${{ github.workflow }}"
+          echo "RUN_ID:      ${{ github.run_id }}"
+          echo "RUN_NUMBER:  ${{ github.run_number }}"
+          echo "RUN_ATTEMPT: ${{ github.run_attempt }}"
+
+
+
+
